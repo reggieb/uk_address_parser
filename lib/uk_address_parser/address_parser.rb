@@ -25,7 +25,7 @@ module UkAddressParser
     # Checking for something that looks like a postcode
     # This is not checking if the postcode is valid
     def postcode_pattern
-      /^[0-9A-Z]{3,4}\s+[0-9A-Z]{3}$/
+      /^[0-9A-Z]{2,4}\s+[0-9A-Z]{3}$/
     end
 
     def build_county
