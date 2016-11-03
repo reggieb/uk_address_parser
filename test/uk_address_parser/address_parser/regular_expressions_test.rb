@@ -45,8 +45,18 @@ module UkAddressParser
         '4 The Long Street' => true,
         '5 This Place' => true,
         '2 Purton' => true,
-        '2 Purton Unknown' => true, 
+        '2 Purton Unknown' => true,
         'Purton Road' => false       # No number
+      }
+    end
+
+    def test_postcode_pattern
+      assert_match_with :postcode_pattern, {
+        'DN3 6GB' => true,
+        'SW42 4RG' => true,
+        'GIR 0AA' => true,
+        '4XX 5TY' => true,
+        'Somewhere' => false
       }
     end
 
@@ -58,25 +68,5 @@ module UkAddressParser
         assert_equal expected, result, msg
       end
     end
-
-    def address_parser
-      @address_parser ||= AddressParser.new(address_string)
-    end
-
-    def address_string
-      @address_string ||= [
-        "Flat #{Faker::Number.between(1, 15)}",
-        "#{Faker::StarWars.character} #{%w(Hall House Building Appartments).sample}",
-        Faker::Address.street_address,
-        Faker::Address.city,
-        %w(Avon Worcestershire Yorkshire Kent).sample,
-        Faker::Address.zip_code
-      ].join(address_join)
-    end
-
-    def address_join
-      @address_join ||= ', '
-    end
-
   end
 end
