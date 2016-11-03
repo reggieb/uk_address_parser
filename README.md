@@ -1,8 +1,26 @@
 # UkAddressParser
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/uk_address_parser`. To experiment with that code, run `bin/console` for an interactive prompt.
+Tool to convert a UK address string into its constituent parts.
 
-TODO: Delete this and the text above, and describe your gem
+So for example:
+
+```ruby
+UkAddressParser.parse 'Flat 1, Bubble House, 12 Long Road, Someton, Worcestershire, WR1 1XX'
+```
+
+Will generate:
+
+    {
+      flat: "Flat 1",
+      house_number: "12",
+      house_name: "Bubble House",
+      street: "Long Road",
+      street2: nil,
+      street3: nil,
+      town: "Someton",
+      county: "Worcestershire",
+      postcode:"WR1 1XX"
+    }
 
 ## Installation
 
@@ -20,9 +38,15 @@ Or install it yourself as:
 
     $ gem install uk_address_parser
 
-## Usage
+## Usage Limitations
 
-TODO: Write usage instructions here
+This parser was initially built to parse a single set of addresses that had a
+fairly limited variance in the arrangement of the component parts.
+
+There are some limitations to how it works:
+
+* The parser only works with comma delimited addresses.
+* The parser assumes the address is a United Kingdom address and does not search for country
 
 ## Development
 
@@ -32,7 +56,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/uk_address_parser.
+Bug reports and pull requests are welcome on GitHub at https://github.com/reggieb/uk_address_parser.
 
 
 ## License
