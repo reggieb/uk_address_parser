@@ -55,11 +55,11 @@ module UkAddressParser
     end
 
     def number_and_known_street_ending
-      /^(\d+\w?)\s([\w\s\-\.]+(#{street_endings.join('|')})$)/i
+      /^(\d+\w?)\s([a-zA-Z\s\-\.]+(#{street_endings.join('|')})$)/i
     end
 
     def known_street_ending_no_number
-      /^([\w\s\-\.]+(#{street_endings.join('|')})$)/i
+      /^([a-zA-Z\s\-\.]+(#{street_endings.join('|')})$)/i
     end
 
     def flat_number
@@ -121,7 +121,7 @@ module UkAddressParser
         'BRDGE', 'BRG', 'BRIDGE', 'BRK', 'BROOK', 'BROOKS', 'BURG', 'BURGS', 'BYP', 'BYPA', 'BYPAS', 'BYPASS',
         'BYPS', 'CAMP', 'CP', 'CMP', 'CANYN', 'CANYON', 'CNYN', 'CAPE', 'CPE', 'CAUSEWAY', 'CAUSWA', 'CSWY',
         'CEN', 'CENT', 'CENTER', 'CENTR', 'CENTRE', 'CNTER', 'CNTR', 'CTR', 'CENTERS', 'CIR', 'CIRC', 'CIRCL',
-        'CIRCLE', 'CRCL', 'CRCLE', 'CIRCLES', 'CLF', 'CLIFF', 'CLFS', 'CLIFFS', 'CLB', 'CLUB', 'COMMON', 'COMMONS',
+        'CIRCLE', 'CRCL', 'CRCLE', 'CIRCLES', 'CLF', 'CLIFF', 'CLFS', 'CLIFFS', 'CL', 'CLOSE', 'CLB', 'CLUB', 'COMMON', 'COMMONS',
         'COR', 'CORNER', 'CORNERS', 'CORS', 'COURSE', 'CRSE', 'COURT', 'CT', 'COURTS', 'CTS', 'COVE', 'CV', 'COVES',
         'CREEK', 'CRK', 'CRESCENT', 'CRES', 'CRSENT', 'CRSNT', 'CREST', 'CROSSING', 'CRSSNG', 'XING', 'CROSSROAD',
         'CROSSROADS', 'CURVE', 'DALE', 'DL', 'DAM', 'DM', 'DIV', 'DIVIDE', 'DV', 'DVD', 'DR', 'DRIV', 'DRIVE', 'DRV',
@@ -139,9 +139,9 @@ module UkAddressParser
         'LOAF', 'LCK', 'LOCK', 'LCKS', 'LOCKS', 'LDG', 'LDGE', 'LODG', 'LODGE', 'LOOP', 'LOOPS', 'MALL', 'MNR', 'MANOR',
         'MANORS', 'MNRS', 'MEADOW', 'MDW', 'MDWS', 'MEADOWS', 'MEDOWS', 'MEWS', 'MILL', 'MILLS', 'MISSN', 'MSSN',
         'MOTORWAY', 'MNT', 'MT', 'MOUNT', 'MNTAIN', 'MNTN', 'MOUNTAIN', 'MOUNTIN', 'MTIN', 'MTN', 'MNTNS', 'MOUNTAINS',
-        'NCK', 'NECK', 'ORCH', 'ORCHARD', 'ORCHRD', 'OVAL', 'OVL', 'OVERPASS', 'PARK', 'PRK', 'PARKS', 'PARKWAY',
+        'NCK', 'NECK', 'ORCH', 'ORCHARD', 'ORCHRD', 'OVAL', 'OVL', 'OVERPASS', 'PARADE' 'PARK', 'PRK', 'PARKS', 'PARKWAY',
         'PARKWY', 'PKWAY', 'PKWY', 'PKY', 'PARKWAYS', 'PKWYS', 'PASS', 'PASSAGE', 'PATH', 'PATHS', 'PIKE', 'PIKES',
-        'PINE', 'PINES', 'PNES', 'PL', 'PLAIN', 'PLN', 'PLAINS', 'PLNS', 'PLAZA', 'PLZ', 'PLZA', 'POINT', 'PT', 'POINTS',
+        'PINE', 'PINES', 'PNES', 'PLACE', 'PL', 'PLAIN', 'PLN', 'PLAINS', 'PLNS', 'PLAZA', 'PLZ', 'PLZA', 'POINT', 'PT', 'POINTS',
         'PTS', 'PORT', 'PRT', 'PORTS', 'PRTS', 'PR', 'PRAIRIE', 'PRR', 'RAD', 'RADIAL', 'RADIEL', 'RADL', 'RAMP', 'RANCH',
         'RANCHES', 'RNCH', 'RNCHS', 'RAPID', 'RPD', 'RAPIDS', 'RPDS', 'REST', 'RST', 'RDG', 'RDGE', 'RIDGE', 'RDGS',
         'RIDGES', 'RIV', 'RIVER', 'RVR', 'RIVR', 'RD', 'ROAD', 'ROADS', 'RDS', 'ROUTE', 'ROW', 'RUE', 'RUN', 'SHL',
@@ -154,8 +154,7 @@ module UkAddressParser
         'TUNNEL', 'TUNNELS', 'TUNNL', 'TRNPK', 'TURNPIKE', 'TURNPK', 'UNDERPASS', 'UN', 'UNION', 'UNIONS', 'VALLEY',
         'VALLY', 'VLLY', 'VLY', 'VALLEYS', 'VLYS', 'VDCT', 'VIA', 'VIADCT', 'VIADUCT', 'VIEW', 'VW', 'VIEWS', 'VWS',
         'VILL', 'VILLAG', 'VILLAGE', 'VILLG', 'VILLIAGE', 'VLG', 'VILLAGES', 'VLGS', 'VILLE', 'VL', 'VIS', 'VIST',
-        'VISTA', 'VST', 'VSTA', 'WALK', 'WALKS', 'WALL', 'WY', 'WAY', 'WAYS', 'WELL', 'WELLS', 'WLS',
-        'PLACE'
+        'VISTA', 'VST', 'VSTA', 'WALK', 'WALKS', 'WALL', 'WY', 'WAY', 'WAYS', 'WELL', 'WELLS', 'WLS'
       ]
     end
   end
