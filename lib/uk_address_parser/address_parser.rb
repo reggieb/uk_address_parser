@@ -19,7 +19,11 @@ module UkAddressParser
     end
 
     def postcode
-      @postcode ||= parts.pop if postcode_pattern =~ parts.last
+      @postcode || build_postcode
+    end
+
+    def build_postcode
+      @postcode = parts.pop if postcode_pattern =~ parts.last
     end
 
     # Checking for something that looks like a postcode
@@ -61,11 +65,11 @@ module UkAddressParser
     end
 
     def number_and_known_street_ending
-      /^(\d+\w?)\s([a-zA-Z\s\-\.]+(#{street_endings.join('|')})$)/i
+      /^(\d+\w?)\s([a-zA-Z\s\-\.\']+(#{street_endings.join('|')})$)/i
     end
 
     def known_street_ending_no_number
-      /^([a-zA-Z\s\-\.]+(#{street_endings.join('|')})$)/i
+      /^([a-zA-Z\s\-\.\']+(#{street_endings.join('|')})$)/i
     end
 
     def flat_number
@@ -138,7 +142,7 @@ module UkAddressParser
         'FWY', 'GARDEN', 'GARDN', 'GRDEN', 'GRDN', 'GARDENS', 'GDNS', 'GRDNS', 'GATEWAY', 'GATEWY', 'GATWAY', 'GTWAY',
         'GTWY', 'GLEN', 'GLN', 'GLENS', 'GREEN', 'GRN', 'GREENS', 'GROV', 'GROVE', 'GRV', 'GROVES', 'HARB', 'HARBOR',
         'HARBR', 'HBR', 'HRBOR', 'HARBORS', 'HAVEN', 'HVN', 'HT', 'HTS', 'HIGHWAY', 'HIGHWY', 'HIWAY', 'HIWY', 'HWAY',
-        'HWY', 'HILL', 'HL', 'HILLS', 'HLS', 'HLLW', 'HOLLOW', 'HOLLOWS', 'HOLW', 'HOLWS', 'INLT', 'IS', 'ISLAND',
+        'HWY', 'HILL', 'HL', 'HILLS', 'HLS', 'HLLW', 'HOLLOW', 'HOLLOWS', 'HOLW', 'HOLWS', 'INLT', 'INLET', 'IS', 'ISLAND',
         'ISLND', 'ISLANDS', 'ISLNDS', 'ISS', 'ISLE', 'ISLES', 'JCT', 'JCTION', 'JCTN', 'JUNCTION', 'JUNCTN', 'JUNCTON',
         'JCTNS', 'JCTS', 'JUNCTIONS', 'KEY', 'KY', 'KEYS', 'KYS', 'KNL', 'KNOL', 'KNOLL', 'KNLS', 'KNOLLS', 'LK',
         'LAKE', 'LKS', 'LAKES', 'LAND', 'LANDING', 'LNDG', 'LNDNG', 'LANE', 'LN', 'LGT', 'LIGHT', 'LIGHTS', 'LF',
