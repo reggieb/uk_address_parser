@@ -5,7 +5,7 @@ module UkAddressParser
     def test_details
       details = address_parser.details
       assert_equal address_components[:flat], details[:flat]
-      assert_equal house_name, details[:house_name]
+      assert_equal building_name, details[:building_name]
       assert_equal(
         address_components[:number_and_street].split(' ').first,
         details[:house_number]

@@ -16,7 +16,7 @@ class Minitest::Test
   def address_components
     @address_components ||= {
       flat: flat,
-      house_name: house_name,
+      building_name: building_name,
       number_and_street: Faker::Address.street_address,
       town: Faker::Address.city,
       county: %w(Avon Worcestershire Lancashire Kent).sample,
@@ -28,8 +28,8 @@ class Minitest::Test
     @flat ||= "Flat #{Faker::Number.between(1, 15)}"
   end
 
-  def house_name
-    @house_name ||= [
+  def building_name
+    @building_name ||= [
       Faker::StarWars.character,
       %w(Hall House Building Appartments).sample
     ].join(' ')

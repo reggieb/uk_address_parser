@@ -1,7 +1,7 @@
 module UkAddressParser
   class AddressParser
 
-    attr_accessor :address, :flat, :house_number, :house_name, :street, :street2, :street3, :town, :county
+    attr_accessor :address, :flat, :house_number, :building_name, :street, :street2, :street3, :town, :county
     def initialize(address)
       self.address = address
     end
@@ -44,8 +44,8 @@ module UkAddressParser
         @street = $2
         parts.shift
       when known_street_ending_no_number
-        if !house_name && (number_and_any_street_name =~ parts[1] || known_street_ending_no_number =~ parts[1])
-          @house_name = parts.shift
+        if !building_name && looks_like_a_street?(parts[1])
+          @building_name = parts.shift
           building_and_street
         else
           @street = parts.shift
@@ -57,9 +57,13 @@ module UkAddressParser
         @house_number = $1
         @street = $2
         parts.shift
+        if !building_name && looks_like_a_street?(parts[0])
+          @building_name = @street
+          @street = parts.shift
+        end
       else
-        unless house_name
-          @house_name = parts.shift
+        unless building_name
+          @building_name = parts.shift
           building_and_street
         end
       end
@@ -81,6 +85,10 @@ module UkAddressParser
       /^(\d+\w?)\s([\w\s\-\.]+)$/i
     end
 
+    def looks_like_a_street?(part)
+      (number_and_any_street_name =~ part || known_street_ending_no_number =~ part)
+    end
+
     def build_town
       @town = parts.pop unless parts.empty?
     end
@@ -98,7 +106,7 @@ module UkAddressParser
       {
         flat: flat,
         house_number: house_number,
-        house_name: house_name,
+        building_name: building_name,
         street: street,
         street2: street2,
         street3: street3,

@@ -10,7 +10,7 @@ class UkAddressParserTest < Minitest::Test
     expected = {
       flat: "Flat 1",
       house_number: "12",
-      house_name: "Bubble House",
+      building_name: "Bubble House",
       street: "Long Road",
       street2: nil,
       street3: nil,
@@ -26,7 +26,7 @@ class UkAddressParserTest < Minitest::Test
     expected = {
       flat: "Flat 1",
       house_number: "12",
-      house_name: "Bubble House",
+      building_name: "Bubble House",
       street: "Long Road",
       street2: nil,
       street3: nil,
