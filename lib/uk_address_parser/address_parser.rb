@@ -7,7 +7,8 @@ module UkAddressParser
     end
 
     def parts
-      @parts ||= address.split(/\s?\,\s?/).collect(&:strip)
+      comma_or_commas_with_empty_spaces = /\s?\,[\s\,]*/
+      @parts ||= address.split(comma_or_commas_with_empty_spaces).collect(&:strip)
     end
 
     def build
